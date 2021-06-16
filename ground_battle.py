@@ -25,7 +25,7 @@ att_force = 900
 att_reserves = 1000
 attackers = att_force + att_reserves
 att_strength = att_force
-att_guard = def_force
+att_guard = att_force
 
 # Defining strategies:
     
@@ -53,8 +53,8 @@ def draft(def_force, def_reserves):
         def_safe = 0
         print("Defender's fielded forces:", def_danger)
         print("Defender's forces still in reserve:", def_safe)
-    def_power = def_danger * 0.975
-    def_protection = def_guard * 0.95
+    def_power = def_danger * 0.980
+    def_protection = def_danger * 0.95
     def_deployment = [def_danger, def_safe, def_power, def_protection]
     return(def_deployment)
 
@@ -81,7 +81,7 @@ def turtle(def_force, def_reserves):
         print("Defender's fielded forces:", def_danger)
         print("Defender's forces still in reserve:", def_safe)
     def_power = def_danger * 0.975
-    def_protection = def_guard * 1.15
+    def_protection = def_danger * 1.15
     def_deployment = [def_danger, def_safe, def_power, def_protection]
     return(def_deployment) 
 
@@ -111,7 +111,7 @@ def blitz(att_force, att_reserves):
         print("Attacker's fielded forces:", att_danger)
         print("Attacker's forces still in reserve:", att_reserves)
     att_power = att_danger * 1.10
-    att_protection = att_guard * 0.90
+    att_protection = att_danger * 0.90
     att_deployment = [att_danger, att_safe, att_power, att_protection]
     return(att_deployment)
 
@@ -124,7 +124,7 @@ def guerilla(att_force, att_reserves):
     print(colored("########## OFFICERS' REPORTS  #########", on_color = "on_cyan"))
     print("Your officers immediately begin plans to target strategic weak points.")
     print("Soldiers move out in small forces and keep the enemy guessing.")
-    print("While not as effective offensively, troop survival rates will be higher.")
+    print("While not as effective offensively, troop survival rates should be higher.")
     # Attacker Strategy Effects
     if att_force > 750:
         att_danger = att_force
@@ -136,7 +136,7 @@ def guerilla(att_force, att_reserves):
     print("Attacker's fielded forces:", att_danger)
     print("Attacker's forces still in reserve:", att_safe)
     att_power = att_danger * 0.95
-    att_protection = att_guard * 1.25
+    att_protection = att_danger * 1.25
     att_deployment = [att_danger, att_safe, att_power, att_protection]
     return(att_deployment)
 
@@ -231,12 +231,12 @@ while (attackers > 0) and (defenders > 0):
         att_force = 0
     # Post-wave results:
     print(colored("########## POST-WAVE RESULTS ##########", on_color = "on_cyan"))
-    print("Defenders:")
+    print(colored("Defenders:", on_color = "on_blue"))
     print("Surviving defensive forces:", def_force)
     print("Defenseive forces kept in reserve:", def_reserves)
     print("Defender strength estimate:", def_strength)
     print("Defender guard estimate:", def_guard)
-    print("Attackers:")
+    print(colored("Attackers:", on_color = "on_red"))
     print("Surviving attacker forces:", att_force)
     print("Attacker forces kept in reserve:", att_reserves)
     print("Attacker strength estimate:", att_strength)
